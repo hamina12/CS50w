@@ -1,1 +1,2 @@
-### This is CS50w Lab Problem testing
+# This is CS50w Lab Problem testing
+### All code is public
