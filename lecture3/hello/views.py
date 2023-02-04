@@ -5,8 +5,5 @@ from django.shortcuts import render
 def index(request):
     return HttpResponse("Hello!")
 
-def brian(request):
-    return HttpResponse("Hello, Brian!")
-
 def greet(request, name):
     return HttpResponse(f"Hello, {name.capitalize()}!")
