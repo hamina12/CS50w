@@ -21,7 +21,7 @@ def add(request):
             tasks.append(task)
         else:
             return render(request, "tasks/add.html", {
-                "form":form
+                "form": form
             })
 
 
