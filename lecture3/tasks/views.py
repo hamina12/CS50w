@@ -4,7 +4,7 @@ from django.shortcuts import render
 tasks = ["foo", "bar", "baz"]
 
 class NewTaskForm(forms.Form):
-    task = forms.CharField(lable="New Task")
+    task = forms.CharField(label="New Task")
 
 # Create your views here.
 def index(request):
