@@ -6,10 +6,19 @@ import markdown2
 def index(request):
     if request.method == "POST":
         name = request.POST.get('q')
-        infor = markdown2.markdown(util.get_entry(name))
-        return render(request, "encyclopedia/load.html",{
-            "infor" : infor
-        })
+        if name != '':
+            try:
+                infor = markdown2.markdown(util.get_entry(name))
+                return render(request, "encyclopedia/load.html",{
+                    "infor" : infor
+            })
+            except:
+                infor = "NONE"
+                return render(request, "encyclopedia/load.html", {
+                    "infor" : infor
+                })
+        else:
+            return render(request, "encyclopedia/load.html")
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
@@ -24,13 +33,14 @@ def save(request):
                 "infor" : infor
             })
 
-        elif 'title' != '' and 'text' != '':
-            # title = request.POST.get('title')
-            # text = request.POST.get('text')
-            # util.save_entry(title, text)
-            return render(request, "encyclopedia/load.html",{
+       # elif 'title' != '' and 'text' != '':
+           # title = request.POST.get('title')
+           # text = request.POST.get('text')
+           # util.save_entry(title, text)
+           # return render(request, "encyclopedia/load.html",{
                 # "infor" : markdown2.markdown(util.get_entry(title))
-            })
+           # })
+
 
     return render(request, "encyclopedia/save.html")
 
@@ -38,10 +48,17 @@ def save(request):
 def load(request):
     if request.method == "POST":
         name = request.POST.get('q')
-        infor = markdown2.markdown(util.get_entry(entri[n]))
-        return render(request, "encyclopedia/load.html",{
-            "infor" : markdown2.markdown(util.get_entry(name))
-        })
+        if name != '':
+            try:
+                infor = markdown2.markdown(util.get_entry(name))
+                return render(request, "encyclopedia/load.html",{
+                    "infor" : infor
+            })
+            except:
+                infor = "NONE"
+                return render(request, "encyclopedia/load.html", {
+                    "infor" : infor
+                })
 
     entri = util.list_entries()
     n = random.randrange(len(entri))
