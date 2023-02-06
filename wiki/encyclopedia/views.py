@@ -6,8 +6,9 @@ import markdown2
 def index(request):
     if request.method == "POST":
         name = request.POST.get('q')
+        infor = markdown2.markdown(util.get_entry(name))
         return render(request, "encyclopedia/load.html",{
-            "infor" : markdown2.markdown(util.get_entry(name))
+            "infor" : infor
         })
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
@@ -18,8 +19,9 @@ def save(request):
     if request.method == "POST":
         if 'q' in request.POST:
             name = request.POST.get('q')
+            infor = markdown2.markdown(util.get_entry(name))
             return render(request, "encyclopedia/load.html",{
-                "infor" : markdown2.markdown(util.get_entry(name))
+                "infor" : infor
             })
 
         elif 'title' != '' and 'text' != '':
@@ -36,13 +38,15 @@ def save(request):
 def load(request):
     if request.method == "POST":
         name = request.POST.get('q')
+        infor = markdown2.markdown(util.get_entry(entri[n]))
         return render(request, "encyclopedia/load.html",{
             "infor" : markdown2.markdown(util.get_entry(name))
         })
 
     entri = util.list_entries()
     n = random.randrange(len(entri))
+    infor = markdown2.markdown(util.get_entry(entri[n]))
     return render(request, "encyclopedia/load.html", {
-        "infor" : markdown2.markdown(util.get_entry(entri[n]))
+        "infor" : infor
     })
 
