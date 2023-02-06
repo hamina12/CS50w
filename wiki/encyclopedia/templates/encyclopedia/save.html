@@ -8,7 +8,7 @@
     <h1>Create new pages</h1>
     <form action = "{% url 'load' %}" method="post">
         {% csrf_token %}
-        <input type="textarea" rows="5" cols="50" >
+        <textarea rows="10" cols="50"></textarea>
         <input type="submit">
     </form>
 {% endblock %}
