@@ -31,8 +31,7 @@ def save(request):
                 "head" : title,
                 "infor" : util.get_entry(title)
             })
-        else:
-            return render(request, "encyclopedia/save.html")
+
     return render(request, "encyclopedia/save.html")
 
 
