@@ -5,7 +5,7 @@ from . import util
 def index(request):
     if request.method == "POST":
         return render(request, "encyclopedia/load.html",{
-            "head" : "CSS"
+            "head" : "CSS",
             "infor" : util.get_entry("CSS")
         })
     return render(request, "encyclopedia/index.html", {
