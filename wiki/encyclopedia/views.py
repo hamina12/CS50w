@@ -10,12 +10,14 @@ def index(request):
 
 def save(request):
     return render(request, "encyclopedia/save.html", {
-    
+
     })
 
 def load(request):
     entri = util.list_entries()
+    n = random.randrange(len(entri))
     return render(request, "encyclopedia/load.html", {
-        "random" : util.get_entry(entri[random.randrange(len(entri))])
+        "head" : entri[n],
+        "random" : util.get_entry(entri[n])
     })
 
