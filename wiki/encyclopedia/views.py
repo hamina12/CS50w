@@ -19,12 +19,12 @@ def save(request):
         name = request.POST.get('q')
         text = request.POST.get('text')
         title = request.POST.get('title')
-        if name != '':
+        if 'search' in request.POST:
             return render(request, "encyclopedia/load.html",{
                 "infor" : markdown2.markdown(util.get_entry(name))
             })
-        elif request.POST.get('save'):
-            # util.save_entry(title, text)
+        elif 'save' in request.POST:
+            util.save_entry(title, text)
             return render(request, "encyclopedia/load.html",{
                 "infor" : markdown2.markdown(util.get_entry(title))
             })
