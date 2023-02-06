@@ -8,3 +8,13 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def save(request):
+    return render(request, "encyclopedia/save.html", {
+
+    })
+
+def load(request):
+    return render(request, "encyclopedia/load.html", {
+
+    })
+
