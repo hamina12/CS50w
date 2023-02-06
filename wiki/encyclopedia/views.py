@@ -16,12 +16,12 @@ def index(request):
 
 def save(request):
     if request.method == "POST":
-        if 'search' in request.POST:
+        if 'q' in request.POST:
             name = request.POST.get('q')
             return render(request, "encyclopedia/load.html",{
                 "infor" : markdown2.markdown(util.get_entry(name))
             })
-        elif 'save' in request.POST:
+        elif 'title' in request.POST and 'text' in request.POST:
             text = request.POST.get('text')
             title = request.POST.get('title')
             util.save_entry(title, text)

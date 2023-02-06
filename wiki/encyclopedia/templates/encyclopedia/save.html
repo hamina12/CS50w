@@ -6,7 +6,7 @@
 
 {% block body %}
     <h1>Create new pages</h1>
-    <form action = "{% url 'load' %}" method="post"  id="save">
+    <form action = "{% url 'load' %}" method="post"  id="form2">
         {% csrf_token %}
         <div style="margin-bottom:5px;"><input type="text" placeholder="title" name="title"></div>
         <div><textarea placeholder="Enter data via github markdown form" name="text"></textarea></div>
