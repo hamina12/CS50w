@@ -21,13 +21,13 @@ def save(request):
             return render(request, "encyclopedia/load.html",{
                 "infor" : markdown2.markdown(util.get_entry(name))
             })
-            
-        elif 'title' in request.POST:
+
+        elif 'title' != '':
             text = request.POST.get('text')
             title = request.POST.get('title')
             util.save_entry(title, text)
             return render(request, "encyclopedia/load.html",{
-                "infor" : markdown2.markdown(util.get_entry(title))
+                # "infor" : markdown2.markdown(util.get_entry(title))
             })
 
     return render(request, "encyclopedia/save.html")
