@@ -6,10 +6,9 @@
 
 {% block body %}
     <h1>Create new pages</h1>
-
-    <input type="textarea">
-    <input type="submit" 
-
-
-
+    <form action = "{% url 'load' %}" method="post">
+        {% csrf_token %}
+        <input type="textarea" width >
+        <input type="submit">
+    </form>
 {% endblock %}
