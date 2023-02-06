@@ -25,7 +25,7 @@ def save(request):
                 "head" : name,
                 "infor" : util.get_entry(name)
             })
-        elif text != '' and title != '':
+        elif text != '' and title != '' and name == '':
             util.save_entry(title, text)
             return render(request, "encyclopedia/load.html",{
                 "head" : title,
