@@ -14,7 +14,9 @@ def save(request):
     })
 
 def load(request):
+    entri = util.list_entries()
     return render(request, "encyclopedia/load.html", {
-        "random" = util.get_entry(util.list_entries("CSS"))
+        "entri" : entri[0],
+        "random" : util.get_entry(entri[0])
     })
 
