@@ -4,10 +4,9 @@ from . import util
 
 
 def index(request):
-    entri = util.list_entries()
     if request.method == "POST":
         return render(request, "encyclopedia/load.html",{
-
+            "infor" : util.get_entry(q)
         })
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
@@ -23,6 +22,6 @@ def load(request):
     n = random.randrange(len(entri))
     return render(request, "encyclopedia/load.html", {
         "head" : entri[n],
-        "random" : util.get_entry(entri[n])
+        "infor" : util.get_entry(entri[n])
     })
 
