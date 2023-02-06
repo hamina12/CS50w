@@ -78,3 +78,17 @@ def load(request):
         "infor" : infor
     })
 
+def edit(request):
+    if request.method == "POST":
+        name = request.POST.get('q')
+        if name != '':
+            try:
+                infor = markdown2.markdown(util.get_entry(name))
+                return render(request, "encyclopedia/load.html",{
+                    "infor" : infor
+            })
+            except:
+                infor = "NONE"
+                return render(request, "encyclopedia/load.html", {
+                    "infor" : infor
+                })
