@@ -17,7 +17,11 @@ def index(request):
 
 def save(request):
     if request.method == "POST":
-        text = request.POST.get('t')
+        name = request.POST.get('q')
+        return render(request, "encyclopedia/load.html",{
+            "head" : name,
+            "infor" : util.get_entry(name)
+        })
 
     return render(request, "encyclopedia/save.html")
 
@@ -30,7 +34,7 @@ def load(request):
             "infor" : util.get_entry(name)
         })
     entri = util.list_entries()
-    
+
     n = random.randrange(len(entri))
     return render(request, "encyclopedia/load.html", {
         "head" : entri[n],
