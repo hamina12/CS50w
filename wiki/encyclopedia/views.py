@@ -4,6 +4,7 @@ from . import util
 
 
 def index(request):
+    entri = util.list_entries()
     if request.method == "POST":
         return render(request, "encyclopedia/load.html",{
             
