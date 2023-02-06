@@ -8,7 +8,7 @@
     <h1>Create new pages</h1>
     <form action = "{% url 'load' %}" method="post">
         {% csrf_token %}
-        <textarea rows="7" cols="50"></textarea>
+        <textarea placeholder="Enter data via github markdown form"></textarea>
         <input type="submit">
     </form>
 {% endblock %}
