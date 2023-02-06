@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django import forms
 import random
 from . import util
 
@@ -6,6 +7,7 @@ from . import util
 def index(request):
     if request.method == "POST":
         return render(request, "encyclopedia/load.html",{
+
             "infor" : util.get_entry([q])
         })
     return render(request, "encyclopedia/index.html", {
