@@ -7,7 +7,7 @@ def index(request):
     entri = util.list_entries()
     if request.method == "POST":
         return render(request, "encyclopedia/load.html",{
-            
+
         })
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
