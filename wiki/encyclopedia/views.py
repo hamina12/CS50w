@@ -28,11 +28,7 @@ def save(request):
     if request.method == "POST":
         title = request.POST.get('title')
         text = request.POST.get('text')
-        if 'title' in request.POST:
-            util.save_entry(title, text)
-        else:
-            return render(request, "encyclopedia/save.html")
-
+        util.save_entry(title, text)
         name = request.POST.get('q')
         if name != None:
             try:
