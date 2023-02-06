@@ -92,3 +92,6 @@ def edit(request):
                 return render(request, "encyclopedia/load.html", {
                     "infor" : infor
                 })
+    return render(request, "encyclopedia/edit.html",{
+        
+    })
