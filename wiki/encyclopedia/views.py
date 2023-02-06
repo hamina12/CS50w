@@ -26,8 +26,15 @@ def index(request):
 
 def save(request):
     if request.method == "POST":
+        title = request.POST.get('title')
+        text = request.POST.get('text')
+        if title != '' and text != '':
+            util.save_entry(title, text)
+        else:
+            return render(request, "encyclopedia/save.html")
+
         name = request.POST.get('q')
-        if name != '':
+        if name != None:
             try:
                 infor = markdown2.markdown(util.get_entry(name))
                 return render(request, "encyclopedia/load.html",{
@@ -39,10 +46,7 @@ def save(request):
                     "infor" : infor
                 })
 
-        elif 'title' != '' and 'text' != '':
-           title = request.POST.get('title')
-           text = request.POST.get('text')
-           util.save_entry(title, text)
+
 
 
 
