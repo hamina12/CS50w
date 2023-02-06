@@ -18,12 +18,21 @@ def index(request):
 def save(request):
     if request.method == "POST":
         name = request.POST.get('q')
-        text = request.POST.get('t')
-        if name != None:
+        text = request.POST.get('text')
+        title = request.POST.get('title')
+        if text == None and name != None:
             return render(request, "encyclopedia/load.html",{
                 "head" : name,
                 "infor" : util.get_entry(name)
             })
+        elif text != None and title != None:
+            util.save_entry(title, text)
+            return render(request, "encyclopedia/load.html",{
+                "head" : title,
+                "infor" : util.get_entry(title)
+            })
+        else:
+            return render(request, "encyclopedia/save.html")
     return render(request, "encyclopedia/save.html")
 
 
