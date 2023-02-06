@@ -5,6 +5,5 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ head }}</h1>
-    <div>{{ infor }}</div>
+    {{ infor|safe }}
 {% endblock %}
