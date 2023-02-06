@@ -8,8 +8,11 @@
     <h1>Edit page</h1>
     <form method="post"  id="form2">
         {% csrf_token %}
-        <div style="margin-bottom:5px;"><input type="text" placeholder="title" name="title"></div>
-        <div><textarea placeholder="Enter data via github markdown form" name="text"></textarea></div>
+        <div>
+            <textarea placeholder="Enter data via github markdown form" name="text">
+                {{ infor|safe }}
+            </textarea>
+        </div>
         <input type="submit" value="SAVE">
     </form>
 {% endblock %}

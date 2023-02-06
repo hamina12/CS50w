@@ -5,8 +5,8 @@ import markdown2
 
 def index(request):
     if request.method == "POST":
-        name = request.POST.get('q')
-        if name != '':
+        if 'q' in request.POST:
+            name = request.POST.get('q')
             try:
                 infor = markdown2.markdown(util.get_entry(name))
                 return render(request, "encyclopedia/load.html",{
@@ -41,8 +41,8 @@ def save(request):
                     "infor" : infor
                 })
 
-        name = request.POST.get('q')
         if 'q' in request.POST:
+            name = request.POST.get('q')
             try:
                 infor = markdown2.markdown(util.get_entry(name))
                 return render(request, "encyclopedia/load.html",{
@@ -58,8 +58,8 @@ def save(request):
 
 def load(request):
     if request.method == "POST":
-        name = request.POST.get('q')
-        if name != '':
+        if 'q' in request.POST:
+            name = request.POST.get('q')
             try:
                 infor = markdown2.markdown(util.get_entry(name))
                 return render(request, "encyclopedia/load.html",{
@@ -80,8 +80,8 @@ def load(request):
 
 def edit(request):
     if request.method == "POST":
-        name = request.POST.get('q')
-        if name != '':
+        if 'q' in request.POST:
+            name = request.POST.get('q')
             try:
                 infor = markdown2.markdown(util.get_entry(name))
                 return render(request, "encyclopedia/load.html",{
