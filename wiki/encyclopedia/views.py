@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import randrange
 from . import util
 
 
@@ -16,7 +16,6 @@ def save(request):
 def load(request):
     entri = util.list_entries()
     return render(request, "encyclopedia/load.html", {
-        "entri" : entri[0],
-        "random" : util.get_entry(entri[0])
+        "random" : util.get_entry(entri[randrange(len(entri))])
     })
 
