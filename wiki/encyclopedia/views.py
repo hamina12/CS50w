@@ -45,8 +45,9 @@ def load(request):
 
     entri = util.list_entries()
     n = random.randrange(len(entri))
+    infor = markdown2.markdown(util.get_entry(entri[n]))
     return render(request, "encyclopedia/load.html", {
         "head" : entri[n],
-        "infor" : markdown2.markdown(util.get_entry(entri[n]))
+        "infor" : infor
     })
 
