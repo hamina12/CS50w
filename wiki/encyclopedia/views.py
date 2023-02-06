@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import random
 from . import util
-
+import markdown2
 
 def index(request):
     if request.method == "POST":
@@ -42,11 +42,11 @@ def load(request):
             "head" : name,
             "infor" : util.get_entry(name)
         })
-    entri = util.list_entries()
 
+    entri = util.list_entries()
     n = random.randrange(len(entri))
     return render(request, "encyclopedia/load.html", {
         "head" : entri[n],
-        "infor" : util.get_entry(entri[n])
+        "infor" : markdown2.markdown(util.get_entry(entri[n]))
     })
 
