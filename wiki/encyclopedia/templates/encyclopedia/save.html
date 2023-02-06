@@ -9,6 +9,6 @@
     <form action = "{% url 'load' %}" method="post">
         {% csrf_token %}
         <textarea placeholder="Enter data via github markdown form" name="t"></textarea>
-        <input type="submit">
+        <input type="submit" value="SAVE">
     </form>
 {% endblock %}
