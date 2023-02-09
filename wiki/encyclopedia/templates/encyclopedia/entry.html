@@ -6,8 +6,5 @@
 
 {% block body %}
     {{ title|safe }}
-    <form method="POST">
-        {% csrf_token %}
-        <input type="submit" value="EDIT">
-    </form>
+    <a href="{% url 'edit' %}">EDIT</a>
 {% endblock %}

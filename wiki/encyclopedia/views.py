@@ -38,14 +38,6 @@ def entry(request, title):
             "title" : name
         })
 
-    if request.method == "POST":
-        name = util.get_entry(title)
-        return render(request, "encyclopedia/edit.html",{
-            "title" : title,
-            "text" : name
-        })
-
-
 
 def create(request):
     if request.method == "POST":
