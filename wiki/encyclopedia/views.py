@@ -75,7 +75,7 @@ def edit(request, title):
         return render(request, "encyclopedia/entry.html", {
             "title" : name
         })
-    """
+
     if request.method == "POST" and 'q' in request.POST:
         q = request.POST.get('q')
         try:
@@ -92,7 +92,6 @@ def edit(request, title):
             return render(request, "encyclopedia/search.html", {
                 "entries" : ent
             })
-    """
 
     return render(request, "encyclopedia/edit.html", {
         "title" : title,
