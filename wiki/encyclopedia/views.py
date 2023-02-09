@@ -5,20 +5,7 @@ from . import util
 
 
 def index(request):
-    if request.method == "POST":
-        if 'q' in request.POST:
-            q = request.POST.get('q')
-            try:
-                title = markdown2.markdown(util.get_entry(q))
-                return render(request, "encyclopedia/entry.html", {
-                    "title" : title
-                })
-            except:
-                title = "Requested page was not found."
-                return render(request, "encyclopedia/entry.html", {
-                    "title" : title
-                })
-
+    if 
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
