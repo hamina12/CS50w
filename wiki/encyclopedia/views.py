@@ -83,7 +83,7 @@ def edit(request, title):
             "title" : name
         })
 
-    if request.method == "POST" and 'q' in request.POST:
+    """if request.method == "POST" and 'q' in request.POST:
         q = request.POST.get('q')
         try:
             name = markdown2.markdown(util.get_entry(q))
@@ -99,6 +99,6 @@ def edit(request, title):
             return render(request, "encyclopedia/search.html", {
                 "entries" : ent
             })
-
+    """
 
 
