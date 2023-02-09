@@ -13,7 +13,19 @@ def index(request):
             "title" : name
             })
         except:
-            render
+            entries = util.list_entries()
+            for q in entries:
+                if q in entries:
+                    que = q
+                    return render(request, "encyclopedia/search.html", {
+                        "entries": que
+                    })
+                else:
+                    name = "Requested page was not found."
+                    return render(request, "encyclopedia/entry.html", {
+                        "title" : name
+                    })
+
 
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
