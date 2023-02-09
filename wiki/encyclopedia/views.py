@@ -40,7 +40,6 @@ def entry(request, title):
             "title" : name
         })
 
-
 def create(request):
     if request.method == "POST":
         if 'q' in request.POST:
