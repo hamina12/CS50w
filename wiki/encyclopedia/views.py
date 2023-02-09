@@ -37,8 +37,7 @@ def entry(request, title):
     except:
         name = "Request page not found"
         return render(request, "encyclopedia/entry.html", {
-            "title" : name,
-            "send" : title
+            "title" : name
         })
 
 
@@ -128,7 +127,7 @@ def randompage(request):
     n = random.randrange(len(entri))
     send = entri[n]
     name = markdown2.markdown(util.get_entry(entri[n]))
-    return render(request, "encyclopedia/randompage.html", {
+    return render(request, "encyclopedia/random.html", {
         "title" : name,
         "send" : send
     })
