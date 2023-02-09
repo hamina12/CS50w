@@ -29,7 +29,7 @@ def index(request):
 
 def entry(request, title):
     try:
-        name = markdown2.markdown(util.get_entry(q))
+        name = markdown2.markdown(util.get_entry(title))
         return render(request, "encyclopedia/entry.html", {
             "title" : name
         })
