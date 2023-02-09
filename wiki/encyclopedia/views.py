@@ -9,6 +9,8 @@ def index(request):
     })
 
 def entry(request, title):
+    infor = get_entry(title)
     return render(request, "encyclopedia/entry.html", {
-        "title" : title
+        "infor" = infor,
+        "title" = title
     })
