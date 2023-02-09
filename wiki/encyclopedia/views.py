@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 import random
 from . import util
 import markdown2
+from .models import EncyclopediaEntry
 
 def index(request):
     if request.method == "POST":
