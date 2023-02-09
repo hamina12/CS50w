@@ -40,7 +40,7 @@ def entry(request, title):
         })
 
 def create(request):
-    return
+    return render(request, "encyclopedia/create.html")
 
 
 
