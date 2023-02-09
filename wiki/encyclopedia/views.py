@@ -76,6 +76,13 @@ def create(request):
     return render(request, "encyclopedia/create.html")
 
 def edit(request, title):
+    if request.method == "POST" and 'text' in request.POST:
+        util.save_entry(title, request.POST.get('text'))
+        name = markdown2.markdown(util.get_entry(request.POST.get('title')))
+        return render(request, "encyclopedia/entry.html", {
+            "title" : name
+        })
+
     if request.method == "POST" and 'q' in request.POST:
         q = request.POST.get('q')
         try:
@@ -92,14 +99,6 @@ def edit(request, title):
             return render(request, "encyclopedia/search.html", {
                 "entries" : ent
             })
-
-    if request.method == "POST" and 'text' in request.POST:
-        util.save_entry(title, request.POST.get('text'))
-        name = markdown2.markdown(util.get_entry(request.POST.get('title')))
-        return render(request, "encyclopedia/entry.html", {
-            "title" : name
-        })
-
 
 
 
