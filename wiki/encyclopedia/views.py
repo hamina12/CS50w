@@ -8,39 +8,23 @@ def index(request):
     if request.method == "POST":
         q = request.POST.get('q')
         try:
-            name = markdown2.markdown(util.get_entry(q))
-            return render(request, "encyclopedia/entry.html", {
-            "title" : name
-            })
-        except:
-            ent = []
-            entries = util.list_entries()
-            for entri in entries:
-                if q in entries:
-                    ent.append(entri)
-            return render(request, "encyclopedia/index.html", {
-                "entries": ent
-            })
+        name = markdown2.markdown(util.get_entry(q))
+        return render(request, "encyclopedia/entry.html", {
+        "title" : name
+        })
+
 
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
 
 def entry(request, title):
-    try:
-        name = markdown2.markdown(util.get_entry(title))
-        return render(request, "encyclopedia/entry.html", {
-            "title" : name
-        })
-    except:
-        ent = []
-        entries = util.list_entries()
-        for entri in entries:
-            if q in entries:
-                ent.append(entri)
-        return render(request, "encyclopedia/index.html", {
-            "entries": ent
-        })
+
+    name = markdown2.markdown(util.get_entry(title))
+    return render(request, "encyclopedia/entry.html", {
+        "title" : name
+    })
+
 
 
 
