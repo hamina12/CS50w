@@ -57,9 +57,23 @@ def create(request):
                 return render(request, "encyclopedia/search.html", {
                     "entries" : ent
                 })
+
         elif 'text' in request.POST and 'text' in request.POST:
-            title = request.POST.get('title')
-            text = request.POST.get('text')
+            util.save_entry(request.POST.get('title'), request.POST.get('text'))
+            try:
+                name = markdown2.markdown(util.get_entry(q))
+                return render(request, "encyclopedia/entry.html", {
+                    "title" : name
+                })
+            except:
+                ent = []
+                entries = util.list_entries()
+                for entri in entries:
+                    if q in entri:
+                        ent.append(entri)
+                return render(request, "encyclopedia/search.html", {
+                    "entries" : ent
+                })
 
 
 
