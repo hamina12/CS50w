@@ -27,13 +27,6 @@ def index(request):
     })
 
 def entry(request, title):
-    if request.method == "POST":
-        name = util.get_entry(title)
-        return render(request, "encyclopedia/edit.html",{
-            "title" : title,
-            "text" : name
-        })
-
     try:
         name = markdown2.markdown(util.get_entry(title))
         return render(request, "encyclopedia/entry.html", {
@@ -43,6 +36,13 @@ def entry(request, title):
         name = "Request page not found"
         return render(request, "encyclopedia/entry.html", {
             "title" : name
+        })
+
+    if request.method == "POST":
+        name = util.get_entry(title)
+        return render(request, "encyclopedia/edit.html",{
+            "title" : title,
+            "text" : name
         })
 
 
@@ -83,7 +83,7 @@ def edit(request, title):
             "title" : name
         })
 
-    """if request.method == "POST" and 'q' in request.POST:
+    if request.method == "POST" and 'q' in request.POST:
         q = request.POST.get('q')
         try:
             name = markdown2.markdown(util.get_entry(q))
@@ -99,6 +99,6 @@ def edit(request, title):
             return render(request, "encyclopedia/search.html", {
                 "entries" : ent
             })
-    """
+
 
 
