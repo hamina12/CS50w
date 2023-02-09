@@ -128,7 +128,7 @@ def randompage(request):
     n = random.randrange(len(entri))
     send = entri[n]
     name = markdown2.markdown(util.get_entry(entri[n]))
-    return render(request, "encyclopedia/random.html", {
+    return render(request, "encyclopedia/randompage.html", {
         "title" : name,
         "send" : send
     })
