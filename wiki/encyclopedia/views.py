@@ -37,6 +37,7 @@ def entry(request, title):
         return render(request, "encyclopedia/entry.html", {
             "title" : name
         })
+    
 
 def create(request):
     if request.method == "POST":
