@@ -5,13 +5,14 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Edit</h1>
+    <h1>Edit {{ title }}</h1>
     <form method="post"  id="form2">
         {% csrf_token %}
         <div>
             <textarea placeholder="Enter data via github markdown form" name="text">
-                {{ title }}
-            </textarea></div>
+                {{ text }}
+            </textarea>
+        </div>
         <input type="submit" value="SAVE">
     </form>
 {% endblock %}

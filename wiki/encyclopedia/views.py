@@ -30,7 +30,8 @@ def entry(request, title):
     if request.method == "POST":
         name = util.get_entry(title)
         return render(request, "encyclopedia/edit.html",{
-            "title" : name
+            "title" : title,
+            "text" : name
         })
 
     try:
@@ -92,8 +93,8 @@ def edit(request):
                 return render(request, "encyclopedia/search.html", {
                     "entries" : ent
                 })
-        if 'text' in request.POST:
-            
+        #if 'text' in request.POST:
+
 
     return render(request, "encyclopedia/edit.html")
 
