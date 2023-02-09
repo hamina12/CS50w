@@ -30,16 +30,15 @@ def index(request):
     })
 
 def entry(request, title):
-    entries = util.list_entries()
-    if title in entries:
+    try:
         name = markdown2.markdown(util.get_entry(title))
         return render(request, "encyclopedia/entry.html", {
             "title": name,
             "send": title
         })
-    else:
+    except:
         name = "Requested page not found"
-        return render(request, "encyclopedia/error.html", {
+        return render(request, "encyclopedia/entry.html", {
             "title": name
         })
 
@@ -56,7 +55,6 @@ def create(request):
                 "title": name,
                 "send": title
             })
-
     return render(request, "encyclopedia/create.html")
 
 def edit(request, title):
@@ -82,10 +80,4 @@ def randompage(request):
         return get_entry_or_search_results(request)
 
     entries = util.list_entries()
-    random_entry_title = random.choice(entries)
-    name = markdown2.markdown(util.get_entry(random_entry_title))
-
-    return render(request, "encyclopedia/entry.html", {
-        "title": name,
-        "send": random_entry_title
-    })
+    title = random.choice(entries)
