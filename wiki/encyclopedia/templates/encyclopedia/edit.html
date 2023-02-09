@@ -10,7 +10,7 @@
         {% csrf_token %}
         <div>
             <textarea placeholder="Enter data via github markdown form" name="text">
-                {{ title|safe }}
+                {{ title }}
             </textarea></div>
         <input type="submit" value="SAVE">
     </form>
