@@ -27,6 +27,12 @@ def index(request):
     })
 
 def entry(request, title):
+    if request.method == "POST":
+        name = markdown2.markdown(util.get_entry(title))
+        return render(request, "encyclopedia/edit.html",{
+            "title" : name
+        })
+
     try:
         name = markdown2.markdown(util.get_entry(title))
         return render(request, "encyclopedia/entry.html", {
@@ -37,7 +43,8 @@ def entry(request, title):
         return render(request, "encyclopedia/entry.html", {
             "title" : name
         })
-    
+
+
 
 def create(request):
     if request.method == "POST":
