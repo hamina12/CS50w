@@ -7,7 +7,6 @@ from . import util
 def index(request):
     if request.method == "POST":
         q = request.POST.get('q')
-        try:
         name = markdown2.markdown(util.get_entry(q))
         return render(request, "encyclopedia/entry.html", {
         "title" : name
