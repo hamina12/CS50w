@@ -93,5 +93,8 @@ def edit(request, title):
                 "entries" : ent
             })
 
-    return render(request, "encyclopedia/edit.html")
+    return render(request, "encyclopedia/edit.html", {
+        "title" : title,
+        "text" : util.get_entry(title)
+    })
 
