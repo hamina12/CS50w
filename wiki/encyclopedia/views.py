@@ -68,7 +68,7 @@ def create(request):
 
     return render(request, "encyclopedia/create.html")
 
-def edit(request):
+def edit(request, title):
     if request.method == "POST":
         util.save_entry(title, request.POST.get('text'))
         name = markdown2.markdown(util.get_entry(request.POST.get('title')))
