@@ -77,7 +77,7 @@ def edit(request, title):
             "title" : name
         })
 
-    if request.method == "POST" and 'q' in request.POST:
+    elif request.method == "POST" and 'q' in request.POST:
         q = request.POST.get('q')
         try:
             name = markdown2.markdown(util.get_entry(q))
