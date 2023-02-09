@@ -28,11 +28,17 @@ def index(request):
     })
 
 def entry(request, title):
-    name = markdown2.markdown(util.get_entry(title))
-    return render(request, "encyclopedia/entry.html", {
-        "title" : name,
-        "send" : title
-    })
+    try:
+        name = markdown2.markdown(util.get_entry(title))
+        return render(request, "encyclopedia/entry.html", {
+            "title" : name,
+            "send" : title
+        })
+    except:
+        name = "NOT FOUND"
+        return render(request, "encyclopedia/entry.html", {
+            "title" : name
+        })
 
 def create(request):
     if request.method == "POST":
@@ -101,7 +107,7 @@ def randompage(request):
     entries = util.list_entries()
     send = random.choice(entries)
     name = markdown2.markdown(util.get_entry(send))
-    return render(request, "encyclopedia/entry.html", {
+    return render(request, "encyclopedia/random.html", {
         "title" : name,
         "send" : send
     })
