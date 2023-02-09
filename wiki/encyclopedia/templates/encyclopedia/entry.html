@@ -6,5 +6,5 @@
 
 {% block body %}
     {{ title|safe }}
-    <a href="/edit.html/{{ send }}">EDIT</a>
+    <a href="{% url 'edit' title=entry.title %}">Edit</a>
 {% endblock %}
