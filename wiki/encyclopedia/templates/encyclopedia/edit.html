@@ -9,9 +9,7 @@
     <form method="post"  id="form2">
         {% csrf_token %}
         <div>
-            <textarea placeholder="Enter data via github markdown form" name="text">
-                {{ text }}
-            </textarea>
+            <textarea name="text">{{ text }}</textarea>
         </div>
         <input type="submit" value="SAVE">
     </form>

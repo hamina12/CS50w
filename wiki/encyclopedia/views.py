@@ -27,13 +27,6 @@ def index(request):
     })
 
 def entry(request, title):
-    if request.method == "POST":
-        text = util.get_entry(title)
-        return render(request, "encyclopedia/edit.html",{
-            "title" : title,
-            "text" : text
-        })
-
     try:
         name = markdown2.markdown(util.get_entry(title))
         return render(request, "encyclopedia/entry.html", {
@@ -99,5 +92,5 @@ def edit(request):
                 "entries" : ent
             })
 
-
+    return render(request, "encyclopedia/edit.html")
 
