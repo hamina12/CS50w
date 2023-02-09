@@ -6,5 +6,7 @@
 
 {% block body %}
     {{ title|safe }}
-    <a href="{% url 'edit' title=send %}">Edit</a>
+    {% if send %}
+        <a href="{% url 'edit' title=send %}">Edit</a>
+    {% endif %}
 {% endblock %}
