@@ -77,7 +77,3 @@ def load(request):
     return render(request, "encyclopedia/load.html", {
         "infor" : infor
     })
-
-def entry_page(request, title):
-    entry = get_object_or_404(EncyclopediaEntry, title=title)
-    return render(request, 'encyclopedia/entry_page.html', {'entry': entry})
