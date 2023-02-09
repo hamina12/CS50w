@@ -10,5 +10,5 @@ def index(request):
 
 def entry(request, title):
     return render(request, "encyclopedia/entry.html", {
-        
+        "title" : title
     })
