@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import random
 from . import util
 import markdown2
@@ -23,6 +23,9 @@ def index(request):
         "entries": util.list_entries()
     })
 
+def entry_page(request, title):
+    entry = get_object_or_404(EncyclopediaEntry, title=title)
+    return render(request, 'encyclopedia/entry_page.html', {'entry': entry})
 
 def save(request):
     if request.method == "POST":
