@@ -30,15 +30,16 @@ def index(request):
     })
 
 def entry(request, title):
-    try:
+    entries = util.list_entries()
+    if title in entries:
         name = markdown2.markdown(util.get_entry(title))
         return render(request, "encyclopedia/entry.html", {
             "title": name,
             "send": title
         })
-    except:
+    else:
         name = "Requested page not found"
-        return render(request, "encyclopedia/entry.html", {
+        return render(request, "encyclopedia/error.html", {
             "title": name
         })
 
