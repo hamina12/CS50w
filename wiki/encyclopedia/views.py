@@ -10,7 +10,8 @@ def index(request):
         try:
             name = markdown2.markdown(util.get_entry(q))
             return render(request, "encyclopedia/entry.html", {
-                "title" : name
+                "title" : name,
+                "send" : q
             })
         except:
             ent = []
@@ -47,7 +48,8 @@ def create(request):
             try:
                 name = markdown2.markdown(util.get_entry(q))
                 return render(request, "encyclopedia/entry.html", {
-                    "title" : name
+                    "title" : name,
+                    "send" : q
                 })
             except:
                 ent = []
@@ -63,7 +65,8 @@ def create(request):
             util.save_entry(request.POST.get('title'), request.POST.get('text'))
             name = markdown2.markdown(util.get_entry(request.POST.get('title')))
             return render(request, "encyclopedia/entry.html", {
-                "title" : name
+                "title" : name,
+                "send" : request.POST.get('title')
             })
 
     return render(request, "encyclopedia/create.html")
@@ -83,7 +86,8 @@ def edit(request, title):
         try:
             name = markdown2.markdown(util.get_entry(q))
             return render(request, "encyclopedia/entry.html", {
-                "title" : name
+                "title" : name,
+                "send" : q
             })
         except:
             ent = []
