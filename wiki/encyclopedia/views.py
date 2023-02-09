@@ -13,10 +13,8 @@ def index(request):
             "title" : name
             })
         except:
-            name = "Requested page was not found."
-            return render(request, "encyclopedia/entry.html", {
-                "title" : name
-            })
+            render
+
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
@@ -33,8 +31,6 @@ def entry(request, title):
             "title" : name
         })
 
-def search(request):
-    return
 
 
 
