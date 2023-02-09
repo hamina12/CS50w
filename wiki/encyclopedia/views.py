@@ -93,6 +93,7 @@ def edit(request, title):
                 return render(request, "encyclopedia/search.html", {
                     "entries" : ent
                 })
+
         if 'text' in request.POST:
             util.save_entry(title, request.POST.get('text'))
             name = markdown2.markdown(util.get_entry(request.POST.get('title')))
