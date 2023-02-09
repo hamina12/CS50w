@@ -105,5 +105,11 @@ def edit(request, title):
     })
 
 def randompage(request):
-    
+    entri = util.list_entries()
+    n = random.randrange(len(entri))
+    name = markdown2.markdown(util.get_entry(entri[n]))
+    return render(request, "encyclopedia/entry.html", {
+        "title" : name,
+        "send" : name
+    })
 
