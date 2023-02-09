@@ -4,6 +4,7 @@ from . import util
 
 
 def index(request):
+    if 
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
     })
