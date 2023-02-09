@@ -37,7 +37,8 @@ def entry(request, title):
     except:
         name = "Request page not found"
         return render(request, "encyclopedia/entry.html", {
-            "title" : name
+            "title" : name,
+            "send" : title
         })
 
 
