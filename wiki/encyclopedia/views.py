@@ -104,7 +104,7 @@ def edit(request, title):
         "text" : util.get_entry(title),
     })
 
-def randompage(request):
+def randompage(request, title):
     if request.method == "POST" and 'q' in request.POST:
         q = request.POST.get('q')
         try:
@@ -123,12 +123,12 @@ def randompage(request):
                 "entries" : ent
         })
 
-
-    entries = util.list_entries()
-    random_entry_title = random.choice(entries)
-    name = markdown2.markdown(util.get_entry(random_entry_title))
-
+    entri = util.list_entries()
+    n = random.randrange(len(entri))
+    send = entri[n]
+    name = markdown2.markdown(util.get_entry(entri[n]))
     return render(request, "encyclopedia/entry.html", {
-        "title": name,
-        "send": random_entry_title
+        "title" : name,
+        "send" : send
     })
+
