@@ -85,9 +85,7 @@ def edit(request):
                     "entries" : ent
                 })
 
-    return render(request, "encyclopedia/edit.html",{
-        
-    })
+    return render(request, "encyclopedia/edit.html")
 
 
 
