@@ -103,7 +103,7 @@ def edit(request, title):
         "text" : util.get_entry(title),
     })
 
-def randompage(request, title):
+def randompage(request):
     if request.method == "POST" and 'q' in request.POST:
         q = request.POST.get('q')
         try:
