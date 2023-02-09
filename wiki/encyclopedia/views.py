@@ -78,20 +78,6 @@ def load(request):
         "infor" : infor
     })
 
-def edit(request):
-    if request.method == "POST":
-        if 'q' in request.POST:
-            name = request.POST.get('q')
-            try:
-                infor = markdown2.markdown(util.get_entry(name))
-                return render(request, "encyclopedia/load.html",{
-                    "infor" : infor
-            })
-            except:
-                infor = "NONE"
-                return render(request, "encyclopedia/load.html", {
-                    "infor" : infor
-                })
-    return render(request, "encyclopedia/edit.html",{
-        
-    })
+def entry_page(request, title):
+    entry = get_object_or_404(EncyclopediaEntry, title=title)
+    return render(request, 'encyclopedia/entry_page.html', {'entry': entry})
