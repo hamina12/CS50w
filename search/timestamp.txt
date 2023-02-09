@@ -1,0 +1,10 @@
+This video makes for learning with CS50w.
+
+Timecodes
+0:00 - 1. Google search page index.html / Upper-right go to image search and advance search.
+0:21 - 2. Click google search and taken to google search page. (Centered and round corner.)
+0:38 - 3. Image search page imagesearch.html / Click a search button and be taken to the Google Image search results for that page.
+0:49 - 4. Google Advanced Search page advancesearch.html / Google’s own advanced search options
+1:08 - 5. Four options stacked vertically, and all of the text fields should be left aligned.
+1:21 - 6. “I’m Feeling Lucky” button to the main Google Search page. Consistent with Google’s own behavior, clicking this link should take users directly to the first Google search result for the query, bypassing the normal results page.
+2:00 - 7. The CSS you write should resemble Google’s own aesthetics.
