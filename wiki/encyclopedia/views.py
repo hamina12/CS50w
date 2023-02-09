@@ -13,12 +13,14 @@ def index(request):
             "title" : name
             })
         except:
-            for q in util.list_entries():
-                if q in util.list_entries():
-                    que = q
-                    return render(request, "encyclopedia/search.html", {
-                        "entries": que
-                    })
+            ent = []
+            entries = util.list_entries()
+            for entri in entries:
+                if q in entries:
+                    ent.append(entri)
+            return render(request, "encyclopedia/index.html", {
+                "entries": ent
+            })
 
     return render(request, "encyclopedia/index.html", {
         "entries": util.list_entries()
@@ -31,11 +33,14 @@ def entry(request, title):
             "title" : name
         })
     except:
-        name = "Requested page was not found."
-        return render(request, "encyclopedia/entry.html", {
-            "title" : name
+        ent = []
+        entries = util.list_entries()
+        for entri in entries:
+            if q in entries:
+                ent.append(entri)
+        return render(request, "encyclopedia/index.html", {
+            "entries": ent
         })
-
 
 
 
