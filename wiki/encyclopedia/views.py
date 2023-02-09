@@ -66,5 +66,25 @@ def create(request):
 
     return render(request, "encyclopedia/create.html")
 
+def edit(request):
+    if request.method == "POST":
+        if 'q' in request.POST:
+            q = request.POST.get('q')
+            try:
+                name = markdown2.markdown(util.get_entry(q))
+                return render(request, "encyclopedia/entry.html", {
+                    "title" : name
+                })
+            except:
+                ent = []
+                entries = util.list_entries()
+                for entri in entries:
+                    if q in entri:
+                        ent.append(entri)
+                return render(request, "encyclopedia/search.html", {
+                    "entries" : ent
+                })
+
+
 
 
