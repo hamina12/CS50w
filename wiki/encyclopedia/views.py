@@ -104,3 +104,6 @@ def edit(request, title):
         "text" : util.get_entry(title),
     })
 
+def randompage(request):
+    
+
