@@ -105,6 +105,24 @@ def edit(request, title):
     })
 
 def randompage(request):
+    if request.method == "POST" and 'q' in request.POST:
+        q = request.POST.get('q')
+        try:
+            name = markdown2.markdown(util.get_entry(q))
+            return render(request, "encyclopedia/entry.html", {
+                "title" : name,
+                "send" : q
+            })
+        except:
+            ent = []
+            entries = util.list_entries()
+            for entri in entries:
+                if q in entri:
+                    ent.append(entri)
+            return render(request, "encyclopedia/search.html", {
+                "entries" : ent
+        })
+
     entri = util.list_entries()
     n = random.randrange(len(entri))
     name = markdown2.markdown(util.get_entry(entri[n]))
