@@ -33,6 +33,9 @@ def entry(request, title):
             "title" : name
         })
 
+def search(request):
+    return
+
 
 
 
