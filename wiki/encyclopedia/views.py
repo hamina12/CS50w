@@ -111,3 +111,16 @@ def randompage(request):
         "title" : name,
         "send" : send
     })
+
+def css_entry(request):
+    try:
+        name = markdown2.markdown(util.get_entry("CSS"))
+        return render(request, "encyclopedia/entry.html", {
+            "title" : name,
+            "send" : "CSS"
+        })
+    except:
+        name = "NOT FOUND"
+        return render(request, "encyclopedia/entry.html", {
+            "title" : name
+        })
