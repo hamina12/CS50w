@@ -111,5 +111,3 @@ def randompage(request):
         "title" : name,
         "send" : send
     })
-
-
