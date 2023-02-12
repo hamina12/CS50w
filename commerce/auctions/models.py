@@ -14,8 +14,8 @@ class Aunction(models.Model):
         return f"{self.name}: {self.price}"
 
 class Bid(models.Model):
-    item = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="item")
-    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="LASTBID")
+    name = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="item")
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="lastbid")
     current = models.DecimalField(max_digits=None, decimal_places=2)
 
     def __str__(self):
@@ -23,7 +23,7 @@ class Bid(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    item = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="item")
+    item = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="onitem")
     comment = models.CharField(max_length=64)
 
     def __str__(self):
