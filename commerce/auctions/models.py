@@ -14,14 +14,18 @@ class Aunction(models.Model):
         return f"{self.name}: {self.price}"
 
 class Bid(models.Model):
-    name = models.ForeignKey(Aunction, on_delete=models.CASCADE, relate_name="item")
+    item = models.ForeignKey(Aunction, on_delete=models.CASCADE, relate_name="item")
     current = models.IntegerField()
 
     def __str__(self):
-        return f"{self.name} :{self.current}"
+        return f"{self.item} :{self.current}"
 
 class Comment(models.Model):
     user = models.ForeignKey(User)
+    item = models.ForeignKey(Aunction, on_delete=models.CASCADE, relate_name="item")
     comment = models.CharField(max_length=64)
+
+    def __str__(self):
+        return f"{self.item}|{self.user}: {self.comment}"
 
 
