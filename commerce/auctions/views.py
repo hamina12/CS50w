@@ -8,6 +8,7 @@ from .models import User, Aunction, Category, Bid, Comment
 
 
 def index(request):
+    image = Aunction.objects.get()
     return render(request, "auctions/index.html",{
         "aunctions": Aunction.objects.all()
     })
