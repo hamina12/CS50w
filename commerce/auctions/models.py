@@ -20,6 +20,8 @@ class Bid(models.Model):
     def __str__(self):
         return f"{self.name} :{self.current}"
 
-class comment(models.Model):
-    
+class Comment(models.Model):
+    user = models.ForeignKey(User)
+    comment = models.CharField(max_length=64)
+
 
