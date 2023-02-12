@@ -8,12 +8,16 @@ class User(AbstractUser):
 
 class Category(models.Model):
     name = models.CharField(max_length=64)
+    slug = models.SlugField()
+    parent = models.ForeignKey('self',blank=True, null=True ,related_name='children')
 
-Category = [ 'ETC.', 'TECH', 'HOME']
+    class Meta:
+        
+
 
 class Aunction(models.Model):
     name = models.CharField(max_length=64)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     price = models.DecimalField(max_digits=64, decimal_places=2)
     pic = models.ImageField()
 
