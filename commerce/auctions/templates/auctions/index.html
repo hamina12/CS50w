@@ -4,8 +4,10 @@
     <h2>Active Listings</h2>
 
     <ul>
+        {% for auntion in aunctions %}
         <li>
-            Aunction Item {{ aunction.id }}|{{ aunction.name }} to 
+            Aunction Item {{ aunction.id }}|{{ aunction.name }} - {{ acuntion.price }}
         </li>
+        {% endfor %}
     </ul>
 {% endblock %}
