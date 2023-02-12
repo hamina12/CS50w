@@ -12,7 +12,6 @@ class Category(models.Model):
     parent = models.ForeignKey('self',blank=True, null=True ,related_name='children', on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = ('ETC.', 'TECH', 'HOME', 'GENERAL')
         verbose_name_plural = "categories"
 
     def __str__(self):
