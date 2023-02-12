@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User, Aunction, Category, Bid, Comment
+from .models import User, Aunction, Category, Bid, Comment, Image
 from .forms import ImageForm
 
 def upload_image(request):
@@ -18,7 +18,7 @@ def upload_image(request):
     return render(request, 'upload_image.html', {'form': form})
 
 
-def display_images(request):
+def display_image(request):
     images = Image.objects.all()
     return render(request, 'display_images.html', {'images': images})
 
