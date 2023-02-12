@@ -7,6 +7,6 @@ class User(AbstractUser):
 
 class aunctions(models.Model):
     name = models.CharField(max_length=64)
-    prize = model.AutoField
+    prize = models.DecimalField(decimal_place=2)
 
 
