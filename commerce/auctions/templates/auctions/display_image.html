@@ -4,6 +4,10 @@
         <title></title>
     </head>
     <body>
-        
+        {% for image in images %}
+        <div>
+            <img src="{{ image.file.url }}" alt="{{ image.name }}">
+        </div>
+        {% endfor %}
     </body>
 </html>

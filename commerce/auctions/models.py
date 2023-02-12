@@ -26,10 +26,14 @@ class Aunction(models.Model):
     name = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     price = models.DecimalField(max_digits=64, decimal_places=2)
-    pic = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return f"{self.name}: {self.price}"
+
+class Image(models.Model):
+    name = models.CharField(max_length=255)
+    file = models.ImageField(upload_to='images/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
 class Bid(models.Model):
     aunction = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="item")
