@@ -16,6 +16,7 @@ class Aunction(models.Model):
 class Bid(models.Model):
     name = models.ForeignKey(Aunction, on_delete=models.CASCADE, relate_name="item")
     price = models.ForeignKey(Aunction, on_delete=models.CASCADE relate_name="price")
-    
+    current = models.IntegerField()
+
 
 
