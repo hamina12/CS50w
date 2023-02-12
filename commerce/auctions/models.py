@@ -7,7 +7,7 @@ class User(AbstractUser):
 
 class aunctions(models.Model):
     name = models.CharField(max_length=64)
-    prize = models.IntegerField(MinValueValidator=0)
+    prize = models.IntegerField()
     pic = models.ImageField()
 
 
