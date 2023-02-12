@@ -5,7 +5,7 @@ from django.db import models
 class User(AbstractUser):
     pass
 
-class aunctions(models.Model):
+class Aunction(models.Model):
     name = models.CharField(max_length=64)
     prize = models.IntegerField()
     pic = models.ImageField()
