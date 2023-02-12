@@ -15,7 +15,7 @@ class Aunction(models.Model):
 
 class Bid(models.Model):
     item = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="item")
-    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="LAST BID")
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="LASTBID")
     current = models.DecimalField(max_digits=None, decimal_places=2)
 
     def __str__(self):
