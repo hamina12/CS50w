@@ -5,9 +5,12 @@ from django.db import models
 class User(AbstractUser):
     pass
 
+class Category(models.Model):
+    name = models.CharField(max_length=64)
+
 class Aunction(models.Model):
     name = models.CharField(max_length=64)
-    category = models.CharField(max_length=64)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=64, decimal_places=2)
     pic = models.ImageField()
 
@@ -31,4 +34,5 @@ class Comment(models.Model):
         return f"{self.item}|{self.user}: {self.comment}"
 
 
-class Category()
+
+
