@@ -4,9 +4,9 @@
     <h2>Active Listings</h2>
 
     <ul>
-        {% for auntion in aunctions %}
+        {% for aunction in aunctions %}
         <li>
-            Aunction Item {{ aunction.id }}|{{ aunction.name }} - {{ aunction.price }}$
+            Item: {{ aunction.name }} - {{ aunction.price }} {{ aunction.pic }}
         </li>
         {% endfor %}
     </ul>
