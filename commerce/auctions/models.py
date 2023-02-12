@@ -27,7 +27,7 @@ class Aunction(models.Model):
     name = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     price = models.DecimalField(max_digits=64, decimal_places=2)
-    pic = models.ImageField()
+    pic = models.ImageField(upload_to='images/')
 
     def __str__(self):
         return f"{self.name}: {self.price}"
