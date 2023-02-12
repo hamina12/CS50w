@@ -7,7 +7,7 @@ class User(AbstractUser):
 
 class Aunction(models.Model):
     name = models.CharField(max_length=64)
-    price = models.IntegerField()
+    price = models.DecimalField(max_digits=None, decimal_places=2)
     pic = models.ImageField()
 
     def __str__(self):
@@ -15,10 +15,11 @@ class Aunction(models.Model):
 
 class Bid(models.Model):
     item = models.ForeignKey(Aunction, on_delete=models.CASCADE, relate_name="item")
-    current = models.IntegerField()
+    user = models.ForeignKey(User, relate_name="Last bid")
+    current = models.DecimalField(max_digits=None, decimal_places=2)
 
     def __str__(self):
-        return f"{self.item} :{self.current}"
+        return f"{self.id}|{self.item}: {self.current}"
 
 class Comment(models.Model):
     user = models.ForeignKey(User)
