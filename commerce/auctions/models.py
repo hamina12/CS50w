@@ -22,7 +22,7 @@ class Category(models.Model):
         return ' -> '.join(full_path[::-1])
 
 
-class Aunction(models.Model):
+class Auction(models.Model):
     name = models.CharField(max_length=64)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     price = models.DecimalField(max_digits=64, decimal_places=2)
@@ -36,7 +36,7 @@ class Image(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
 class Bid(models.Model):
-    aunction = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="item")
+    auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name="item")
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="lastbid")
     current = models.DecimalField(max_digits=64, decimal_places=2)
 
@@ -45,7 +45,7 @@ class Bid(models.Model):
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    aunction = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="onitem")
+    auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name="onitem")
     comment = models.CharField(max_length=64)
 
     def __str__(self):

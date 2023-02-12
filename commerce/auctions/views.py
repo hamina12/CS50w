@@ -4,12 +4,12 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User, Aunction, Category, Bid, Comment, Image
+from .models import User, Auction, Category, Bid, Comment, Image
 from .forms import ImageForm
 
 def index(request):
     return render(request, "auctions/index.html",{
-        "aunctions": Aunction.objects.all()
+        "auctions": Auction.objects.all()
     })
 
 
@@ -72,9 +72,9 @@ def upload_image(request):
             return redirect(display_images)
     else:
         form = ImageForm()
-    return render(request, "aucntions/upload_image.html", {"form": form})
+    return render(request, "auctions/upload_image.html", {"form": form})
 
 def display_images(request):
     images = Image.objects.all()
-    return render(request, "aunctions/display_images.html", {"images": images})
+    return render(request, "auctions/display_image.html", {"images": images})
 
