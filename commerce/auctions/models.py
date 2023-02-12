@@ -7,7 +7,10 @@ class User(AbstractUser):
 
 class Aunction(models.Model):
     name = models.CharField(max_length=64)
-    prize = models.IntegerField()
+    price = models.IntegerField()
     pic = models.ImageField()
+
+    def __str__(self):
+        return f"{self.name}: {self.price}"
 
 
