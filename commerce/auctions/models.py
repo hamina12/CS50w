@@ -14,16 +14,16 @@ class Aunction(models.Model):
         return f"{self.name}: {self.price}"
 
 class Bid(models.Model):
-    item = models.ForeignKey(Aunction, on_delete=models.CASCADE, relate_name="item")
-    user = models.ForeignKey(User, relate_name="Last bid")
+    item = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="item")
+    user = models.ForeignKey(User)
     current = models.DecimalField(max_digits=None, decimal_places=2)
 
     def __str__(self):
-        return f"{self.id}|{self.item}: {self.current}"
+        return f"{self.item}: {self.user}|{self.current}"
 
 class Comment(models.Model):
     user = models.ForeignKey(User)
-    item = models.ForeignKey(Aunction, on_delete=models.CASCADE, relate_name="item")
+    item = models.ForeignKey(Aunction, on_delete=models.CASCADE, related_name="item")
     comment = models.CharField(max_length=64)
 
     def __str__(self):
