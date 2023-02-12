@@ -12,7 +12,7 @@ class Category(models.Model):
     parent = models.ForeignKey('self',blank=True, null=True ,related_name='children')
 
     class Meta:
-        unique_together = ('ETC.', 'TECH', 'HOME', )
+        unique_together = ('ETC.', 'TECH', 'HOME', 'GENERAL')
         verbose_name_plural = "categories"
 
 
