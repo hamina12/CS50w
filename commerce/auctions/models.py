@@ -3,4 +3,5 @@ from django.db import models
 
 
 class User(AbstractUser):
-    pass
+    name = models.CharField(max_lenght=64)
+    
