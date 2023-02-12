@@ -7,22 +7,6 @@ from django.urls import reverse
 from .models import User, Aunction, Category, Bid, Comment, Image
 from .forms import ImageForm
 
-def upload_image(request):
-    if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('display_images')
-    else:
-        form = ImageForm()
-    return render(request, 'upload_image.html', {'form': form})
-
-
-def display_image(request):
-    images = Image.objects.all()
-    return render(request, 'display_images.html', {'images': images})
-
-
 def index(request):
     return render(request, "auctions/index.html",{
         "aunctions": Aunction.objects.all()
@@ -80,4 +64,17 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(display_images)
+    else:
+        form = ImageForm()
+    return render(request, "aucntions/upload_image.html", {"form": form})
+
+def display_images(request):
+    images = Image.objects.all()
+    return render(request, "aunctions/display_images.html", {"images": images})
 
