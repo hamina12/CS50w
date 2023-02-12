@@ -3,6 +3,5 @@ from django.db import models
 
 
 class User(AbstractUser):
-    aunction_listings = models.CharField(max_lenght=64)
-    bids = models.
+    pass
 
