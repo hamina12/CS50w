@@ -7,7 +7,7 @@ class User(AbstractUser):
 
 class Aunction(models.Model):
     name = models.CharField(max_length=64)
-    price = models.DecimalField(max_digits=None, decimal_places=2)
+    price = models.DecimalField(max_digits=, decimal_places=2)
     pic = models.ImageField()
 
     def __str__(self):
