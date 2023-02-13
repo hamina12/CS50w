@@ -64,7 +64,7 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
-def upload_image(request):
+def createlist(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -72,9 +72,9 @@ def upload_image(request):
             return HttpResponseRedirect(reverse("upload"))
     else:
         form = ImageForm()
-    return render(request, "auctions/upload_image.html", {"form": form})
+    return render(request, "auctions/createlist.html", {"form": form})
 
-def display_images(request):
+def list(request):
     images = Image.objects.all()
-    return render(request, "auctions/display_image.html", {"images": images})
+    return render(request, "auctions/list.html", {"images": images})
 
