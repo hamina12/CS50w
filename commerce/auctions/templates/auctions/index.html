@@ -1,14 +1,23 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h2>Active Listings</h2>
+<h1>Active Listings</h1>
+ 
+{% for image in auction_images %}
+    <div class="card" style="width: 18rem; margin: 5px;">
+        <img src="{{ image.file.url }}" alt="{{ image.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ image.auction.id }}. {{ image.auction.name }}</h5>
+          <p class="card-text">{{ image.auction.price }}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+{% endfor %}
+<nav class="navbar sticky-bottom bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">AUCTION PAGE</a>
+    </div>
+</nav>
 
-    <ul>
-        {% for aunction in aunctions %}
-        <li>
-            Item: {{ aunction.name }} - {{ aunction.price }}
-            <img src="{{ aunction.pic.url }}" alt="Ham">
-        </li>
-        {% endfor %}
-    </ul>
+
 {% endblock %}

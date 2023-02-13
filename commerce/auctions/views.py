@@ -8,9 +8,11 @@ from .models import User, Auction, Category, Bid, Comment, Image
 from .forms import ImageForm
 
 def index(request):
+    auction_images = Image.objects.all()
     return render(request, "auctions/index.html",{
-        "auctions": Auction.objects.all()
+        "auction_images": auction_images,
     })
+
 
 
 def login_view(request):
@@ -69,7 +71,7 @@ def createlist(request):
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect(reverse("upload"))
+            return HttpResponseRedirect(reverse("list"))
     else:
         form = ImageForm()
     return render(request, "auctions/createlist.html", {"form": form})
