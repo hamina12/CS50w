@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<h1>Category</h1>
+
+<ul>
+{% for catg in catgs %}
+    <li>
+        <a href="#">{{ catg.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+<nav class="navbar sticky-bottom bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}">AUCTION PAGE</a>
+    </div>
+</nav>
+
+
+{% endblock %}

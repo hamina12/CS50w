@@ -80,3 +80,8 @@ def list(request):
     images = Image.objects.all()
     return render(request, "auctions/list.html", {"images": images})
 
+def category(request):
+    catgs = Category.objects.all()
+    return render(request, "auctions/category.html",{
+        "catgs" : catgs,
+    })
