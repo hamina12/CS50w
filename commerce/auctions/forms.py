@@ -1,7 +1,7 @@
 from django import forms
-from .models import Image
+from .models import Auction
 
-class ImageForm(forms.ModelForm):
+class AuctionForm(forms.ModelForm):
     class Meta:
-        model = Image
-        fields = ('name', 'file')
+        model = Auction
+        fields = ('name', 'category', 'price', 'image')

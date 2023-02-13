@@ -1,16 +1,17 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User, Auction, Category, Bid, Comment, Image
-from .forms import ImageForm
+from .models import User, Auction, Category, Bid, Comment
+from .forms import AuctionForm
 
 def index(request):
-    auction_images = Image.objects.all()
+    auctions = Auction.objects.all()
     return render(request, "auctions/index.html",{
-        "auction_images": auction_images,
+        "auctions": auctions,
     })
 
 
@@ -66,18 +67,23 @@ def register(request):
     else:
         return render(request, "auctions/register.html")
 
+@login_required
 def createlist(request):
     if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
+        form = AuctionForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse("list"))
+            auction = form.save(commit=False)
+            auction.user =  request.user
+            auction.save()
+            return HttpResponseRedirect(reverse("index"))
     else:
-        form = ImageForm()
-    return render(request, "auctions/createlist.html", {"form": form})
+        form = AuctionForm()
+    return render(request, "auctions/createlist.html", {
+        "form": form,
+        })
 
 def list(request):
-    images = Image.objects.all()
+    images = Auction.objects.all()
     return render(request, "auctions/list.html", {"images": images})
 
 def category(request):

@@ -24,22 +24,17 @@ class Category(models.Model):
 
 class Auction(models.Model):
     name = models.CharField(max_length=64)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, editable=False)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     price = models.DecimalField(max_digits=64, decimal_places=2)
+    image = models.ImageField(upload_to="images/", null=True)
 
     def __str__(self):
         return f"{self.id}{self.name}: {self.price}"
 
-class Image(models.Model):
-    auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name="ref", null=True, blank=True)
-    name = models.CharField(max_length=255)
-    file = models.ImageField(upload_to='images/')
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-
-
 class Bid(models.Model):
     auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name="item", null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name="lastbid")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="lastbid")
     current = models.DecimalField(max_digits=64, decimal_places=2)
 
     def __str__(self):

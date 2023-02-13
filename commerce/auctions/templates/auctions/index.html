@@ -2,16 +2,18 @@
 
 {% block body %}
 <h1>Active Listings</h1>
- 
-{% for image in auction_images %}
-    <div class="card" style="width: 18rem; margin: 5px;">
-        <img src="{{ image.file.url }}" alt="{{ image.name }}">
-        <div class="card-body">
-          <h5 class="card-title">{{ image.auction.id }}. {{ image.auction.name }}</h5>
-          <p class="card-text">{{ image.auction.price }}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
+
+{% for auction in auctions %}
+<div class="card mb-3">
+  <img class="card-img-top" style="max-width:auto; max-height:300px; object-fit:cover;" src="{{ auction.image.url }}" alt="{{ auction.name }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ auction.name }}</h5>
+    <p class="card-text">Sales: {{ auction.user }}</p>
+    <p class="card-text">Category: {{ auction.category }}</p>
+    <p class="card-text">Price: {{ auction.price }}$</p>
+    <a href="#" class="btn btn-primary">Detail more!</a>
+  </div>
+</div>
 {% endfor %}
 <nav class="navbar sticky-bottom bg-body-tertiary">
     <div class="container-fluid">
