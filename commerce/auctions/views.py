@@ -82,9 +82,9 @@ def createlist(request):
         "form": form,
         })
 
-def list(request):
-    images = Auction.objects.all()
-    return render(request, "auctions/list.html", {"images": images})
+def list(request, id):
+    auctions = Auction.objects.get(id=id)
+    return render(request, "auctions/list.html", {"auctions" : auctions})
 
 def category(request):
     catgs = Category.objects.all()
